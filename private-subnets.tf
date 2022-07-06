@@ -71,9 +71,10 @@ output "private_route_table_id" {
 }
 
 resource "aws_route" "ipv4_egress_from_private_subnets_to_internet" {
+  count                  = var.manage_ipv4_nat_gateway ? 1 : 0
   route_table_id         = aws_route_table.private.id
   destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id         = aws_nat_gateway.default.id
+  nat_gateway_id         = aws_nat_gateway.default[0].id
 }
 
 resource "aws_route" "ipv6_egress_from_private_subnets_to_internet" {
