@@ -8,6 +8,12 @@ variable "region" {
   type        = string
 }
 
+variable "manage_ipv4_nat_gateway" {
+  description = "Whether to create/manage the IPv4 NAT gateway (extra cost)"
+  type        = boolean
+  default     = false
+}
+
 variable "vpc_cidr_block" {
   description = "CIDR block for the VPC"
   type        = string

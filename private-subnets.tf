@@ -40,6 +40,7 @@ resource "aws_eip" "ngw" {
 }
 
 resource "aws_nat_gateway" "default" {
+  count         = var.manage_ipv4_nat_gateway ? 1 : 0
   allocation_id = aws_eip.ngw.id
   subnet_id     = aws_subnet.primary_public.id
 
