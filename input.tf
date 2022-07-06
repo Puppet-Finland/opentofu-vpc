@@ -10,7 +10,7 @@ variable "region" {
 
 variable "manage_ipv4_nat_gateway" {
   description = "Whether to create/manage the IPv4 NAT gateway (extra cost)"
-  type        = boolean
+  type        = bool
   default     = false
 }
 
