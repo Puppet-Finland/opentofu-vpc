@@ -1,6 +1,7 @@
-# terraform-vpc
+# opentofu-vpc
 
-This is a module for creating AWS VPC using a standard pattern:
+This is a Opentofu/Terraform module for creating AWS VPC using a standard
+pattern:
 
 * Two public subnets
 * Two private subnets
