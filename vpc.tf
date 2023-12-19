@@ -8,6 +8,3 @@ resource "aws_vpc" "vpc" {
     Name                  = "${var.basename}-vpc"
   }
 }
-output "vpc_id" {
-  value = aws_vpc.vpc.id
-}

@@ -10,10 +10,6 @@ resource "aws_subnet" "primary_public" {
   }
 }
 
-output "primary_public_subnet_id" {
-  value = aws_subnet.primary_public.id
-}
-
 resource "aws_subnet" "secondary_public" {
   vpc_id                          = aws_vpc.vpc.id
   cidr_block                      = var.secondary_public_subnet_cidr_block
@@ -24,10 +20,6 @@ resource "aws_subnet" "secondary_public" {
   tags = {
     Name                  = "${var.basename}-secondary-public"
   }
-}
-
-output "secondary_public_subnet_id" {
-  value = aws_subnet.secondary_public.id
 }
 
 resource "aws_internet_gateway" "igw" {
@@ -43,10 +35,6 @@ resource "aws_route_table" "public" {
   tags = {
     Name = "${var.basename}-public-subnets"
   }
-}
-
-output "public_route_table_id" {
-  value = aws_route_table.public.id
 }
 
 resource "aws_route" "ipv4_egress_from_public_subnets_to_internet" {

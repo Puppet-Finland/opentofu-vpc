@@ -8,7 +8,28 @@ pattern:
     * IPv4 egress via NAT gateway (extra cost)
     * IPv6 egress via egress-only internet gateway
 
-Example usage:
+# Input variables
+
+* **basename**: prefix or suffix to add to all resource names
+* **region**: AWS region to create the VPC in
+* **manage_ipv4_nat_gateway**: whether to create/manage the IPv4 NAT gateway for extra cost (boolean, defaults to false)
+* **vpc_cidr_block**: CIDR block for the VPC
+* **primary_public_subnet_cidr_block**: CIDR block for the primary public subnet
+* **secondary_public_subnet_cidr_block**: CIDR block for the secondary public subnet
+* **primary_private_subnet_cidr_block**: CIDR block for the primary private subnet
+* **secondary_private_subnet_cidr_block**: CIDR block for the secondary private subnet
+
+# Output variables
+
+* **primary_private_subnet_id**: ID of the primary private subnet
+* **secondary_private_subnet_id**: ID of the secondary private subnet
+* **private_route_table_id**: ID of the private subnet routing table
+* **primary_public_subnet_id**: ID of the primary public subnet
+* **secondary_public_subnet_id**: ID of the secondary public subnet
+* **public_route_table_id**: ID of the public subnet routing table
+* **vpc_id**: the ID of the VPC
+
+# Example usage
 
     module "acme-vpc" {
       source                              = <git-url>

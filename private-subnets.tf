@@ -10,10 +10,6 @@ resource "aws_subnet" "primary_private" {
   }
 }
 
-output "primary_private_subnet_id" {
-  value = aws_subnet.primary_private.id
-}
-
 resource "aws_subnet" "secondary_private" {
   vpc_id                          = aws_vpc.vpc.id
   cidr_block                      = var.secondary_private_subnet_cidr_block
@@ -24,10 +20,6 @@ resource "aws_subnet" "secondary_private" {
   tags = {
     Name                  = "${var.basename}-secondary-private"
   }
-}
-
-output "secondary_private_subnet_id" {
-  value = aws_subnet.secondary_private.id
 }
 
 resource "aws_eip" "ngw" {
@@ -64,10 +56,6 @@ resource "aws_route_table" "private" {
   tags = {
     Name = "${var.basename}-private-subnets"
   }
-}
-
-output "private_route_table_id" {
-  value = aws_route_table.private.id
 }
 
 resource "aws_route" "ipv4_egress_from_private_subnets_to_internet" {
