@@ -28,6 +28,7 @@ pattern:
 * **secondary_public_subnet_id**: ID of the secondary public subnet
 * **public_route_table_id**: ID of the public subnet routing table
 * **vpc_id**: the ID of the VPC
+* **cidr_block**: the CIDR block of the VPC
 
 # Example usage
 

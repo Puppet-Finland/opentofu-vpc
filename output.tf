@@ -25,3 +25,7 @@ output "public_route_table_id" {
 output "vpc_id" {
   value = aws_vpc.vpc.id
 }
+
+output "cidr_block" {
+  value = aws_vpc.vpc.cidr_block
+}
