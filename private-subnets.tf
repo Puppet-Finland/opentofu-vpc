@@ -23,6 +23,7 @@ resource "aws_subnet" "secondary_private" {
 }
 
 resource "aws_eip" "ngw" {
+  count      = var.manage_ipv4_nat_gateway ? 1 : 0
   vpc        = true
   depends_on = [aws_internet_gateway.igw]
 
