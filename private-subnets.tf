@@ -23,6 +23,7 @@ resource "aws_subnet" "secondary_private" {
 }
 
 resource "aws_eip" "ngw" {
+  count      = var.manage_ipv4_nat_gateway ? 1 : 0
   vpc        = true
   depends_on = [aws_internet_gateway.igw]
 
@@ -33,7 +34,7 @@ resource "aws_eip" "ngw" {
 
 resource "aws_nat_gateway" "default" {
   count         = var.manage_ipv4_nat_gateway ? 1 : 0
-  allocation_id = aws_eip.ngw.id
+  allocation_id = aws_eip.ngw[0].id
   subnet_id     = aws_subnet.primary_public.id
 
   tags = {
